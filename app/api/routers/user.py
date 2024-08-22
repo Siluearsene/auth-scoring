@@ -85,33 +85,3 @@ def delete_user(user_id: UUID, service: UserService = Depends(UserService)):
     is_deleted = service.delete_user(user_id)
     if is_deleted:
         return {"message": "Utilisateur supprimé avec succès"}
-
-
-@router.put("/{user_id}/activate", response_model=UserInDB, status_code=status.HTTP_200_OK)
-def activate_user(user_id: UUID, service: UserService = Depends(UserService)):
-    """
-    Active un utilisateur par son identifiant.
-
-    **Paramètres**:
-    - `user_id` (UUID): Identifiant de l'utilisateur.
-
-    **Réponse**:
-    - **200 OK**: Utilisateur activé avec succès.
-    - **404 Not Found**: Utilisateur non trouvé.
-    """
-    return service.activate_user(user_id)
-
-
-@router.put("/{user_id}/deactivate", response_model=UserInDB, status_code=status.HTTP_200_OK)
-def deactivate_user(user_id: UUID, service: UserService = Depends(UserService)):
-    """
-    Désactive un utilisateur par son identifiant.
-
-    **Paramètres**:
-    - `user_id` (UUID): Identifiant de l'utilisateur.
-
-    **Réponse**:
-    - **200 OK**: Utilisateur désactivé avec succès.
-    - **404 Not Found**: Utilisateur non trouvé.
-    """
-    return service.deactivate_user(user_id)
