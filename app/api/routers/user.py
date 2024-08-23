@@ -7,14 +7,7 @@ from app.models.data.user import User
 from app.models.requests.user import UserInDB, UserResponse, UserUpdate, UserCreate
 from app.services.user_service import UserService
 
-router = APIRouter()
-
-
-@router.get("/me", response_model=UserResponse)
-async def read_users_me(
-        current_user: Annotated[User, Depends(get_current_active_user)]):
-    return current_user
-
+router = APIRouter()    
 
 
 @router.get("/", response_model=List[UserInDB], status_code=status.HTTP_200_OK)
