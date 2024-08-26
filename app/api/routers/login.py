@@ -5,7 +5,6 @@ from fastapi.security import OAuth2PasswordRequestForm
 from jwt import InvalidTokenError
 import logfire
 from app.configuration.config import AuthSettings
-from app.exceptions.custom_exception import InactiveUserException, InvalidTokenException, UserNotFoundException
 from app.services.user_service import UserService
 
 auth_settings = AuthSettings()
