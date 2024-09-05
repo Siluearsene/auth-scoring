@@ -70,7 +70,7 @@ def generate_excel(user_predict: UserPredictRequest, user_service: UserServicePr
 
     # Try to load the model with exception handling
     try:
-        filename = '/home/silue/Téléchargements/modelbest.sav'
+        filename = 'generated_files/modelbest.sav'
         scoring = pickle.load(open(filename, 'rb'))
     except Exception as e:
         print(f"Failed to load the model: {e}")
@@ -85,8 +85,8 @@ def generate_excel(user_predict: UserPredictRequest, user_service: UserServicePr
     data['y_Prob'] = Y_Prob
     print(data['y_predict'], '================1')
     print(data['y_Prob'], '================2')
-
-    probabilite = data['y_Prob']
-    prediction = data['y_predict']
-
-    # return probabilite,prediction
+    return {
+        "y_predict": Y_pred.tolist(),  # Convert to list for JSON serialization
+        "y_prob": Y_Prob.tolist(),     # Convert to list for JSON serialization
+        "data": data.to_dict(orient='records')  # Include the data if needed
+    }

@@ -2,7 +2,6 @@ from pydantic import BaseModel, Field
 from uuid import UUID
 
 class UserPredictRequest(BaseModel):
-    id: UUID = Field(..., description="Unique identifier for the user")
     name: str = Field(..., min_length=2, max_length=50, description="Nom de l'utilisateur")
     montant_pret: float = Field(..., description="Montant du prêt")
     anciennete_avant_pret: float = Field(..., description="Ancienneté avant prêt en années")
