@@ -19,18 +19,5 @@ services:
       - ${USER_SERVICE_PORT}:8000
     volumes:
       - .:/app
-    environment:
-      - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db/${POSTGRES_DB}
-      - providers: [
-    NotificationService
-  ], MAIL_USERNAME=${MAIL_USERNAME}
-      - MAIL_PASSWORD=${MAIL_PASSWORD}
-      - MAIL_FROM=${MAIL_FROM}
-      - MAIL_PORT=${MAIL_PORT}
-      - MAIL_SERVER=${MAIL_SERVER}
-  
-
-volumes:
-  postgres_data:
-
+    
 

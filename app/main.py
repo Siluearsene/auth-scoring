@@ -4,6 +4,7 @@ from app.configuration.database import engine, Base
 from fastapi.middleware.cors import CORSMiddleware
 import logfire
 from app.api.routers.user import router as user_router
+from app.api.routers.user_predict import router as user_predict
 
 
 app = FastAPI(title="Authentication Microservice scoring credit")
@@ -26,6 +27,7 @@ app.add_middleware(
 
 app.include_router(user_router, prefix="/api/v1")
 app.include_router(login_router, prefix="/api/v1")
+app.include_router(user_predict, prefix="/api/v1")
 
 # Configure logfire
 logfire.configure(service_name='auth-microservice',)

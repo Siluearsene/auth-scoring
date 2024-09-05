@@ -45,7 +45,7 @@ class UserService:
             setattr(user, key, value)
 
         self.user_repo.update_user(user)
-        return user
+        return user 
 
     def delete_user(self, user_id: int) -> bool:
         """

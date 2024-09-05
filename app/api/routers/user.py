@@ -1,8 +1,6 @@
 from typing import Annotated, List
 from uuid import UUID
 from fastapi import APIRouter, Depends, status
-from app.dependencies.auth import get_current_active_user
-from app.exceptions.custom_exception import EmailAlreadyUsedException, UserNotFoundException
 from app.models.data.user import User
 from app.models.requests.user import UserInDB, UserResponse, UserUpdate, UserCreate
 from app.services.user_service import UserService
@@ -78,3 +76,5 @@ def delete_user(user_id: UUID, service: UserService = Depends(UserService)):
     is_deleted = service.delete_user(user_id)
     if is_deleted:
         return {"message": "Utilisateur supprimé avec succès"}
+
+
